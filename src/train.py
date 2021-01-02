@@ -56,9 +56,12 @@ class Trainer:
             if not os.path.exists(os.path.join(self.sample_dir, str(epoch))):
                 os.makedirs(os.path.join(self.sample_dir, str(epoch)))
 
-            for step, image in enumerate(self.data_loader):
-                low_resolution = image['lr'].to(self.device)
-                high_resolution = image['hr'].to(self.device)
+            #for step, image in enumerate(self.data_loader):
+            for step, low_resolution, high_resolution in enumerate(self.data_loader):
+                #low_resolution = image['lr'].to(self.device)
+                #high_resolution = image['hr'].to(self.device)
+                low_resolution = low_resolution.to(self.device)
+                high_resolution = high_resolution.to(self.device)
 
                 real_labels = torch.ones((high_resolution.size(0), 1)).to(self.device)
                 fake_labels = torch.zeros((high_resolution.size(0), 1)).to(self.device)

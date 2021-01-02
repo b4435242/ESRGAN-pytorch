@@ -11,7 +11,7 @@ class Datasets(Dataset):
         self.scale = scale
 
         if not os.path.exists('datasets'):
-            raise Exception(f"[!] dataset is not exited")
+            raise Exception(f"[!] dataset is not existed")
 
         self.image_file_name = sorted(os.listdir(os.path.join('datasets', 'hr')))
 
@@ -33,7 +33,8 @@ class Datasets(Dataset):
 
         images = {'lr': low_resolution, 'hr': high_resolution}
 
-        return images
+        #return images
+        return low_resolution, high_resolution
 
     def __len__(self):
         return len(self.image_file_name)
