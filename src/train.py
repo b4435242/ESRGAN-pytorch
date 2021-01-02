@@ -57,7 +57,7 @@ class Trainer:
                 os.makedirs(os.path.join(self.sample_dir, str(epoch)))
 
             #for step, image in enumerate(self.data_loader):
-            for step, low_resolution, high_resolution in enumerate(self.data_loader):
+            for step, (low_resolution, high_resolution) in enumerate(self.data_loader):
                 #low_resolution = image['lr'].to(self.device)
                 #high_resolution = image['hr'].to(self.device)
                 low_resolution = low_resolution.to(self.device)
